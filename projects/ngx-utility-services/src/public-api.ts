@@ -1,7 +1,6 @@
 /*
- * Public API Surface of ngx-utility-services
+ * Public API Surface of utility-services
  */
 
-export * from './lib/ngx-utility-services.service';
-export * from './lib/ngx-utility-services.component';
-export * from './lib/ngx-utility-services.module';
+export * from './lib/services/firestorage-upload.service';
+export * from './lib/services/firestore-data-pagination.service';
