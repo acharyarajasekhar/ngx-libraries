@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@acharyarajasekhar/dynamic-dom-injector": "^1.0.0",
+    "@acharyarajasekhar/ngx-image-preloader": "^1.0.0",
     "@acharyarajasekhar/upload-progress-indicator": "^1.0.2",
     "@angular/animations": "~9.1.7",
     "@angular/common": "~9.1.7",

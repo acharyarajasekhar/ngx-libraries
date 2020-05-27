@@ -1,0 +1,17 @@
+img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+img.rounded {
+    width: 200px;
+    border-radius: 50%;
+    height: 200px;
+}
+
+ion-slides {
+    --bullet-background: rgba(255,255,255,0.8);
+    --bullet-background-active: white;
+}

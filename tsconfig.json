@@ -27,6 +27,10 @@
       "ngx-image-preloader": [
         "dist/ngx-image-preloader/ngx-image-preloader",
         "dist/ngx-image-preloader"
+      ],
+      "ion-photo-slides-card": [
+        "dist/ion-photo-slides-card/ion-photo-slides-card",
+        "dist/ion-photo-slides-card"
       ]
     }
   },
