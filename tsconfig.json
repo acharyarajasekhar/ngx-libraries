@@ -19,6 +19,10 @@
       "ngx-utility-services": [
         "dist/ngx-utility-services/ngx-utility-services",
         "dist/ngx-utility-services"
+      ],
+      "ngx-utility-pipes": [
+        "dist/ngx-utility-pipes/ngx-utility-pipes",
+        "dist/ngx-utility-pipes"
       ]
     }
   },
