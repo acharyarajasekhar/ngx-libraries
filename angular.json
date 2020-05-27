@@ -82,6 +82,46 @@
           }
         }
       }
+    },
+    "ngx-image-preloader": {
+      "projectType": "library",
+      "root": "projects/ngx-image-preloader",
+      "sourceRoot": "projects/ngx-image-preloader/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-image-preloader/tsconfig.lib.json",
+            "project": "projects/ngx-image-preloader/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-image-preloader/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-image-preloader/src/test.ts",
+            "tsConfig": "projects/ngx-image-preloader/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-image-preloader/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-image-preloader/tsconfig.lib.json",
+              "projects/ngx-image-preloader/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ngx-utility-services"
 }

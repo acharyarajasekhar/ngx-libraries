@@ -23,6 +23,10 @@
       "ngx-utility-pipes": [
         "dist/ngx-utility-pipes/ngx-utility-pipes",
         "dist/ngx-utility-pipes"
+      ],
+      "ngx-image-preloader": [
+        "dist/ngx-image-preloader/ngx-image-preloader",
+        "dist/ngx-image-preloader"
       ]
     }
   },
