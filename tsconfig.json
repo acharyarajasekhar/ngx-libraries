@@ -31,6 +31,10 @@
       "ion-photo-slides-card": [
         "dist/ion-photo-slides-card/ion-photo-slides-card",
         "dist/ion-photo-slides-card"
+      ],
+      "ngx-report-abuse": [
+        "dist/ngx-report-abuse/ngx-report-abuse",
+        "dist/ngx-report-abuse"
       ]
     }
   },

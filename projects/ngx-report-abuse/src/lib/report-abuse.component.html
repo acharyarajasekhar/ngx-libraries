@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br />
+  <div class="container">
+    <dynamic-form #dynamicForm [controls]="controls" [form]="form" [svgIconBasePath]="'assets/icons/'">
+    </dynamic-form>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="onSave()">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
