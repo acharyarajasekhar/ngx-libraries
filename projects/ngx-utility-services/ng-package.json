@@ -5,7 +5,8 @@
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
       "@acharyarajasekhar/upload-progress-indicator": "@acharyarajasekhar/upload-progress-indicator",
-      "lodash": "lodash"
+      "lodash": "lodash",
+      "@ionic/angular": "@ionic/angular"
     }
   }
 }
