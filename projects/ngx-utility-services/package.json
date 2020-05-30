@@ -1,6 +1,6 @@
 {
   "name": "@acharyarajasekhar/ngx-utility-services",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "peerDependencies": {
     "@acharyarajasekhar/dynamic-dom-injector": "^1.0.0",
     "@acharyarajasekhar/upload-progress-indicator": "^1.0.2",
@@ -8,7 +8,8 @@
     "lodash": "^1.0.0",
     "@angular/fire": "^6.0.0",
     "@angular/common": "^9.1.9",
-    "@angular/core": "^9.1.9"
+    "@angular/core": "^9.1.9",    
+    "@ionic/angular": "^5.1.1"
   },
   "dependencies": {
     "tslib": "^1.10.0"
