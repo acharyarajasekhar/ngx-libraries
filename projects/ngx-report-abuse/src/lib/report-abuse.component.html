@@ -14,11 +14,9 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="cancel()">Cancel</ion-button>
-    </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="onSave()">Save</ion-button>
+      <ion-button (click)="cancel()">Cancel</ion-button>
+      <ion-button (click)="onSave()" color="danger" fill="solid">Submit</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>

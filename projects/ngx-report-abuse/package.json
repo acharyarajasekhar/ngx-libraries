@@ -1,6 +1,6 @@
 {
   "name": "@acharyarajasekhar/ngx-report-abuse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "peerDependencies": {
     "@acharyarajasekhar/busy-indicator": "^1.0.1",
     "@acharyarajasekhar/custom-form-controls": "^1.0.7",
