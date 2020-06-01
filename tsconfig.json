@@ -35,6 +35,10 @@
       "ngx-report-abuse": [
         "dist/ngx-report-abuse/ngx-report-abuse",
         "dist/ngx-report-abuse"
+      ],
+      "ion-native-services": [
+        "dist/ion-native-services/ion-native-services",
+        "dist/ion-native-services"
       ]
     }
   },

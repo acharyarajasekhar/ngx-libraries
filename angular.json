@@ -202,6 +202,46 @@
           }
         }
       }
+    },
+    "ion-native-services": {
+      "projectType": "library",
+      "root": "projects/ion-native-services",
+      "sourceRoot": "projects/ion-native-services/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ion-native-services/tsconfig.lib.json",
+            "project": "projects/ion-native-services/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ion-native-services/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ion-native-services/src/test.ts",
+            "tsConfig": "projects/ion-native-services/tsconfig.spec.json",
+            "karmaConfig": "projects/ion-native-services/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ion-native-services/tsconfig.lib.json",
+              "projects/ion-native-services/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ngx-utility-services"
 }
