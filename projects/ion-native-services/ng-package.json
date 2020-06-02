@@ -4,11 +4,13 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "@ionic-native/image-picker/ngx": "@ionic-native/image-picker",
       "@ionic-native/core": "@ionic-native/core",
       "@acharyarajasekhar/busy-indicator": "@acharyarajasekhar/busy-indicator",
       "lodash": "lodash",
-      "@ionic-native/image-picker/ngx/index": "@ionic-native/image-picker/ngx/index"
+      "@ionic-native/image-picker/ngx/index": "@ionic-native/image-picker/ngx/index",
+      "@ionic-native/photo-viewer/ngx/index": "@ionic-native/photo-viewer/ngx/index",
+      "@ionic-native/image-picker/ngx": "@ionic-native/image-picker/ngx",
+      "@ionic-native/photo-viewer/ngx": "@ionic-native/photo-viewer/ngx"
     }
   }
 }

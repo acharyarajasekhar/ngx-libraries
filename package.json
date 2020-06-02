@@ -30,6 +30,7 @@
     "@angular/router": "~9.1.7",
     "@ionic-native/core": "^5.26.0",
     "@ionic-native/image-picker": "^5.26.0",
+    "@ionic-native/photo-viewer": "^5.26.0",
     "@ionic/angular": "^5.1.1",
     "firebase": "^7.14.5",
     "lodash": "^4.17.15",

@@ -1,11 +1,12 @@
 {
   "name": "@acharyarajasekhar/ion-native-services",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9",
     "@ionic-native/core": "^5.26.0",
-    "@ionic-native/image-picker": "^5.26.0"
+    "@ionic-native/image-picker": "^5.26.0",
+    "@ionic-native/photo-viewer": "^5.26.0"
   },
   "dependencies": {
     "tslib": "^1.10.0"
