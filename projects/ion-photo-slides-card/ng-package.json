@@ -4,7 +4,8 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "@acharyarajasekhar/ngx-image-preloader": "@acharyarajasekhar/ngx-image-preloader"
+      "@acharyarajasekhar/ngx-image-preloader": "@acharyarajasekhar/ngx-image-preloader",
+      "@acharyarajasekhar/ion-native-services": "@acharyarajasekhar/ion-native-services"
     }
   }
 }

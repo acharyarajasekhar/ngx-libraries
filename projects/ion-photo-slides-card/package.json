@@ -1,10 +1,12 @@
 {
   "name": "@acharyarajasekhar/ion-photo-slides-card",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "peerDependencies": {    
     "@acharyarajasekhar/ngx-image-preloader": "^1.0.0",
     "@angular/common": "^9.1.9",
-    "@angular/core": "^9.1.9"
+    "@angular/core": "^9.1.9",
+    "@ionic-native/photo-viewer": "^5.26.0",
+    "@acharyarajasekhar/ion-native-services": "^1.0.3"
   },
   "dependencies": {
     "tslib": "^1.10.0"
