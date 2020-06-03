@@ -39,6 +39,10 @@
       "ion-native-services": [
         "dist/ion-native-services/ion-native-services",
         "dist/ion-native-services"
+      ],
+      "ngx-firebase-phone-login": [
+        "dist/ngx-firebase-phone-login/ngx-firebase-phone-login",
+        "dist/ngx-firebase-phone-login"
       ]
     }
   },

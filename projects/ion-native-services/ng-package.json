@@ -10,7 +10,10 @@
       "@ionic-native/image-picker/ngx/index": "@ionic-native/image-picker/ngx/index",
       "@ionic-native/photo-viewer/ngx/index": "@ionic-native/photo-viewer/ngx/index",
       "@ionic-native/image-picker/ngx": "@ionic-native/image-picker/ngx",
-      "@ionic-native/photo-viewer/ngx": "@ionic-native/photo-viewer/ngx"
+      "@ionic-native/photo-viewer/ngx": "@ionic-native/photo-viewer/ngx",
+      "@ionic-native/firebase-authentication/ngx": "@ionic-native/firebase-authentication/ngx",
+      "firebase/app": "firebase/app",
+      "@ionic-native/firebase-authentication/ngx/index": "@ionic-native/firebase-authentication/ngx/index"
     }
   }
 }

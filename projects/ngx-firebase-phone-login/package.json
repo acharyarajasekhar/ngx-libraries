@@ -1,13 +1,12 @@
 {
-  "name": "@acharyarajasekhar/ion-native-services",
-  "version": "1.0.4",
+  "name": "@acharyarajasekhar/ngx-firebase-phone-login",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9",
-    "@ionic-native/core": "^5.26.0",
-    "@ionic-native/image-picker": "^5.26.0",
-    "@ionic-native/photo-viewer": "^5.26.0",
-    "@ionic-native/firebase-authentication": "^5.26.0"
+    "@acharyarajasekhar/busy-indicator": "^1.0.1",
+    "@acharyarajasekhar/ngx-utility-services": "1.0.3",
+    "@acharyarajasekhar/ion-native-services": "1.0.4"
   },
   "dependencies": {
     "tslib": "^1.10.0"

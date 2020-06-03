@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ngx-firebase-phone-login",
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "firebase/app": "firebase/app",
+      "@acharyarajasekhar/ngx-utility-services": "@acharyarajasekhar/ngx-utility-services",
+      "@ionic/angular": "@ionic/angular",
+      "@acharyarajasekhar/busy-indicator": "@acharyarajasekhar/busy-indicator",
+      "@acharyarajasekhar/ion-native-services": "@acharyarajasekhar/ion-native-services"
+    }
+  }
+}

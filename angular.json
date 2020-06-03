@@ -242,6 +242,46 @@
           }
         }
       }
+    },
+    "ngx-firebase-phone-login": {
+      "projectType": "library",
+      "root": "projects/ngx-firebase-phone-login",
+      "sourceRoot": "projects/ngx-firebase-phone-login/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-firebase-phone-login/tsconfig.lib.json",
+            "project": "projects/ngx-firebase-phone-login/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-firebase-phone-login/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-firebase-phone-login/src/test.ts",
+            "tsConfig": "projects/ngx-firebase-phone-login/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-firebase-phone-login/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-firebase-phone-login/tsconfig.lib.json",
+              "projects/ngx-firebase-phone-login/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ngx-utility-services"
 }

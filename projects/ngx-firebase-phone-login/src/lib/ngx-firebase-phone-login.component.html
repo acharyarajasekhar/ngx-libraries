@@ -1,0 +1,38 @@
+<ion-content [fullscreen]="true">
+    <div id="container">
+
+        <div class="card" style="width: 20rem; margin: auto;" *ngIf="!windowRef.confirmationResult">
+            <div class="card-body">
+                <h5 class="card-title">Login</h5>
+                <p class="card-text">Please enter your mobile number</p>
+                <br />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">+91</span>
+                    </div>
+                    <input type="number" class="form-control" [(ngModel)]="phoneNumber">
+                </div>
+                <button type="button" class="btn btn-primary" (click)="sendLoginCode()">Login</button>
+            </div>
+        </div>
+
+        <div #captchaDiv id="captchaDiv" class="captcha-div" *ngIf="!this.isMobile"
+            [ngStyle]="{ 'display': windowRef.confirmationResult ? 'none' : 'inline-block' }"></div>
+
+        <div class="card" style="width: 20rem; margin: auto;" *ngIf="windowRef.confirmationResult">
+            <div class="card-body">
+                <h5 class="card-title">Verify</h5>
+                <p class="card-text">Please enter the one time password sent to your mobile number...</p>
+                <br />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">OTP</span>
+                    </div>
+                    <input type="number" class="form-control" [(ngModel)]="verificationCode">
+                </div>
+                <button type="button" class="btn btn-primary" (click)="verifyLoginCode()">Verify</button>
+            </div>
+        </div>
+        
+    </div>
+</ion-content>
