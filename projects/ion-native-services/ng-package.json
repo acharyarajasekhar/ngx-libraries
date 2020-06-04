@@ -13,7 +13,8 @@
       "@ionic-native/photo-viewer/ngx": "@ionic-native/photo-viewer/ngx",
       "@ionic-native/firebase-authentication/ngx": "@ionic-native/firebase-authentication/ngx",
       "firebase/app": "firebase/app",
-      "@ionic-native/firebase-authentication/ngx/index": "@ionic-native/firebase-authentication/ngx/index"
+      "@ionic-native/firebase-authentication/ngx/index": "@ionic-native/firebase-authentication/ngx/index",
+      "@ionic/angular": "@ionic/angular"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@acharyarajasekhar/ion-native-services",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9",

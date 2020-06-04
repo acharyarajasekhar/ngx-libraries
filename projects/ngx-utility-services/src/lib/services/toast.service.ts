@@ -22,9 +22,16 @@ export class ToastService {
     }
 
     async error(error: any) {
+
+        let message: any = '';
+
+        if (typeof error === 'string' || error instanceof String) { message = error; }
+        else if (!!error.message) { message = error.message; }
+        else { message = JSON.stringify(error); }
+
         const toast = await this.toastController.create({
             header: 'ERROR',
-            message: error.message,
+            message: message,
             position: 'bottom',
             mode: 'ios',
             color: 'danger',
@@ -35,6 +42,7 @@ export class ToastService {
             }]
         });
         toast.present();
+
     }
 
 }
