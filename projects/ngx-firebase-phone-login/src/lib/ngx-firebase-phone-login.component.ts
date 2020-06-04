@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChildren, NgZone } from '@angular/core';
 import { BusyIndicatorService } from '@acharyarajasekhar/busy-indicator';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { NativeFirebaseAuthService } from '@acharyarajasekhar/ion-native-services';
+import { NativeFirebaseAuthService, NativeSMSListenerService } from '@acharyarajasekhar/ion-native-services';
 import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
 import * as firebase from 'firebase/app';
 
@@ -20,6 +20,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
   phoneNumber: string;
   verificationCode: string;
 
+  public smsWatch: boolean = false;
   isMobile: boolean = false;
 
   constructor(
@@ -28,7 +29,8 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     private toast: ToastService,
     private zone: NgZone,
     private platform: Platform,
-    private nativeFireBaseAuth: NativeFirebaseAuthService
+    private nativeFireBaseAuth: NativeFirebaseAuthService,
+    private nativeSmsListenerService: NativeSMSListenerService
   ) {
     if (this.platform.is('android') || this.platform.is('ios')) this.isMobile = true;
   }
@@ -51,6 +53,9 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
         this.windowRef.recaptchaVerifier.render();
       });
     }
+    else {
+      this.nativeSmsListenerService.checkPermissions();
+    }
   }
 
   sendLoginCode() {
@@ -72,7 +77,10 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     this.busy.show();
     const num = "+91" + this.phoneNumber.toString();
     this.nativeFireBaseAuth.verifyPhoneNumber(num)
-      .then((result) => {
+      .then(async (result) => {
+        this.startSMSWatch().then(() => {
+          this.toast.show("SMS watch started...");
+        }).catch(err => this.toast.error(err));
         this.zone.run(() => {
           this.windowRef.confirmationResult = result;
         });
@@ -149,6 +157,32 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
         this.busy.hide();
         this.toast.error(error);
       });
+  }
+
+  onSMSArrive = async (e: any) => {
+    let sms = e.data;
+    if (!!sms && !!sms.body && sms.body.includes("is your verification code")) {
+      try {
+        let smsParts = sms.body.split(" ");
+        let tempOtp = smsParts[0];
+        if (tempOtp.length === 6 && !isNaN(tempOtp)) {
+          this.verificationCode = tempOtp;
+        }
+      }
+      catch (e) { this.toast.error(e) }
+      await this.stopSMSWatch();
+    }
+  }
+
+  private startSMSWatch() {
+    return this.nativeSmsListenerService.startSMSWatch(() => {
+      this.smsWatch = true;
+    }, this.onSMSArrive);
+  }
+
+  private stopSMSWatch() {
+    this.smsWatch = false;
+    return this.nativeSmsListenerService.stopSMSWatch();
   }
 
 }

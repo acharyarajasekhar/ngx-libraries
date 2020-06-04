@@ -14,7 +14,10 @@
       "@ionic-native/firebase-authentication/ngx": "@ionic-native/firebase-authentication/ngx",
       "firebase/app": "firebase/app",
       "@ionic-native/firebase-authentication/ngx/index": "@ionic-native/firebase-authentication/ngx/index",
-      "@ionic/angular": "@ionic/angular"
+      "@ionic/angular": "@ionic/angular",
+      "@ionic-native/android-permissions/ngx": "@ionic-native/android-permissions/ngx",
+      "@ionic-native/android-permissions/ngx/index": "@ionic-native/android-permissions/ngx/index",
+      "@acharyarajasekhar/ngx-utility-services": "@acharyarajasekhar/ngx-utility-services"
     }
   }
 }
