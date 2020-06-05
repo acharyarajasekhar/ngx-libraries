@@ -29,12 +29,13 @@
                         <span class="input-group-text" id="basic-addon1">OTP</span>
                     </div>
                     <input type="number" class="form-control" [(ngModel)]="verificationCode">
-                    <div class="input-group-append" *ngIf="smsWatch">
-                        <span class="input-group-text" id="basic-addon1">
-                            <ion-spinner name="lines-small" slot="end" class="otp-spinner"></ion-spinner>
-                        </span>
-                    </div>
                 </div>
+                <p class="card-text" *ngIf="smsWatch">
+                    <small class="text-muted" style="display: flex; align-items: center; text-align: center;">
+                        <ion-spinner name="lines-small" slot="start" class="otp-spinner"></ion-spinner> Trying to auto
+                        fetch otp...
+                    </small>
+                </p>
                 <button type="button" class="btn btn-primary" (click)="verifyLoginCode()">Verify</button>
             </div>
         </div>

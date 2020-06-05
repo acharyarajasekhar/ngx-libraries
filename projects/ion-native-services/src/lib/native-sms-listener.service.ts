@@ -33,7 +33,7 @@ export class NativeSMSListenerService {
     }
 
     public startSMSWatch(onWatchStartCallback: any, onSMSArriveCallback: any) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.platform.ready().then(() => {
                 if (SMS) {
                     SMS.startWatch(() => {
@@ -43,11 +43,13 @@ export class NativeSMSListenerService {
                         onWatchStartCallback();
                         resolve();
                     }, (error: any) => {
-                        reject(error);
+                        this.toast.error(error);
+                        resolve();
                     });
                 }
                 else {
-                    reject('SMS plugin not found');
+                    this.toast.error('SMS plugin not found');
+                    resolve();
                 }
             });
         });
@@ -60,11 +62,13 @@ export class NativeSMSListenerService {
                     SMS.stopWatch(() => {
                         resolve();
                     }, (error: any) => {
-                        reject(error);
+                        this.toast.error(error);
+                        resolve();
                     });
                 }
                 else {
-                    reject('SMS plugin not found');
+                    this.toast.error('SMS plugin not found');
+                    resolve();
                 }
             });
         });
