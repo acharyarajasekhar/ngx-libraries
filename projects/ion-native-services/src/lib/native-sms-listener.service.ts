@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
+// import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
 
 declare var SMS: any;
 
@@ -13,15 +13,15 @@ export class NativeSMSListenerService {
     constructor(
         private platform: Platform,
         private androidPermissions: AndroidPermissions,
-        private toast: ToastService
+        // private toast: ToastService
     ) { }
 
     public checkPermissions() {
 
         this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_SMS).then(
-            result => this.toast.show(`Has READ_SMS permission? ${JSON.stringify(result)}`),
+            result => console.log(`Has READ_SMS permission? ${JSON.stringify(result)}`),
             err => {
-                this.toast.error(err);
+                console.log(err);
                 this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_SMS);
             }
         );
@@ -43,12 +43,12 @@ export class NativeSMSListenerService {
                         onWatchStartCallback();
                         resolve();
                     }, (error: any) => {
-                        this.toast.error(error);
+                        console.log(error);
                         resolve();
                     });
                 }
                 else {
-                    this.toast.error('SMS plugin not found');
+                    console.log('SMS plugin not found');
                     resolve();
                 }
             });
@@ -62,12 +62,12 @@ export class NativeSMSListenerService {
                     SMS.stopWatch(() => {
                         resolve();
                     }, (error: any) => {
-                        this.toast.error(error);
+                        console.log(error);
                         resolve();
                     });
                 }
                 else {
-                    this.toast.error('SMS plugin not found');
+                    console.log('SMS plugin not found');
                     resolve();
                 }
             });

@@ -79,7 +79,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     this.nativeFireBaseAuth.verifyPhoneNumber(num)
       .then(async (result) => {
         this.startSMSWatch().then(() => {
-          this.toast.show("SMS watch started...");
+          console.log("SMS watch started...");
         }).catch(err => this.toast.error(err));
         this.zone.run(() => {
           this.windowRef.confirmationResult = result;
@@ -121,20 +121,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     }
 
     if (this.isMobile) {
-      this.busy.show();
-      this.nativeFireBaseAuth.validateOtp(this.windowRef.confirmationResult, this.verificationCode.toString())
-        .then(result => {
-          this.busy.hide();
-          this.windowRef.confirmationResult = null;
-          this.phoneNumber = null;
-          this.verificationCode = null;
-          this.router.navigate(['/home']);
-          this.toast.show("Login successfull...");
-        })
-        .catch(error => {
-          this.busy.hide();
-          this.toast.error(error);
-        })
+      this.verifyLoginOtpByApp();
     }
     else {
       this.verifyLoginOtpByWeb();
@@ -142,6 +129,23 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
 
   }
 
+
+  private verifyLoginOtpByApp() {
+    this.busy.show();
+    this.nativeFireBaseAuth.validateOtp(this.windowRef.confirmationResult, this.verificationCode.toString())
+      .then(result => {
+        this.busy.hide();
+        this.windowRef.confirmationResult = null;
+        this.phoneNumber = null;
+        this.verificationCode = null;
+        this.router.navigate(['/home']);
+        this.toast.show("Login successfull...");
+      })
+      .catch(error => {
+        this.busy.hide();
+        this.toast.error(error);
+      });
+  }
 
   private verifyLoginOtpByWeb() {
     this.busy.show();
@@ -166,10 +170,13 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
         let smsParts = sms.body.split(" ");
         let tempOtp = smsParts[0];
         if (tempOtp.length === 6 && !isNaN(tempOtp)) {
-          this.verificationCode = tempOtp;
+          this.zone.run(() => {
+            this.verificationCode = tempOtp;
+            this.verifyLoginCode();
+          });
         }
       }
-      catch (e) { this.toast.error(e) }
+      catch (e) { console.log(e) }
       await this.stopSMSWatch();
     }
   }
