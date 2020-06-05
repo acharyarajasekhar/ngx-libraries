@@ -17,7 +17,11 @@
       "@ionic/angular": "@ionic/angular",
       "@ionic-native/android-permissions/ngx": "@ionic-native/android-permissions/ngx",
       "@ionic-native/android-permissions/ngx/index": "@ionic-native/android-permissions/ngx/index",
-      "@acharyarajasekhar/ngx-utility-services": "@acharyarajasekhar/ngx-utility-services"
+      "@acharyarajasekhar/ngx-utility-services": "@acharyarajasekhar/ngx-utility-services",
+      "@ionic-native/navigation-bar/ngx": "@ionic-native/navigation-bar/ngx",
+      "@ionic-native/navigation-bar/ngx/index": "@ionic-native/navigation-bar/ngx/index",
+      "@ionic-native/social-sharing/ngx": "@ionic-native/social-sharing/ngx",
+      "@ionic-native/social-sharing/ngx/index": "@ionic-native/social-sharing/ngx/index"
     }
   }
 }

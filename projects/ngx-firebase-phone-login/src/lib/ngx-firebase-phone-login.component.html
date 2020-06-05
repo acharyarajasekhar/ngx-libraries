@@ -12,7 +12,7 @@
                     </div>
                     <input type="number" class="form-control" [(ngModel)]="phoneNumber">
                 </div>
-                <button type="button" class="btn btn-primary" (click)="sendLoginCode()">Login</button>
+                <ion-button color="primary" (click)="sendLoginCode()">Login</ion-button>
             </div>
         </div>
 
@@ -30,13 +30,14 @@
                     </div>
                     <input type="number" class="form-control" [(ngModel)]="verificationCode">
                 </div>
-                <p class="card-text" *ngIf="smsWatch">
-                    <small class="text-muted" style="display: flex; align-items: center; text-align: center; width: 100%;">
+                <p class="card-text" *ngIf="smsWatch" style="width: 100%;">
+                    <small class="text-muted"
+                        style="display: flex; align-items: center; text-align: center; width: 100%;">
                         <ion-spinner name="lines-small" slot="start" class="otp-spinner"></ion-spinner> Trying to auto
                         fetch otp...
                     </small>
                 </p>
-                <button type="button" class="btn btn-primary" (click)="verifyLoginCode()">Verify</button>
+                <ion-button color="primary" (click)="verifyLoginCode()">Verify</ion-button>
             </div>
         </div>
 
