@@ -9,3 +9,4 @@ export * from './lib/native-firebase-auth.service';
 export * from './lib/native-sms-listener.service';
 export * from './lib/native-navigation-bar.service';
 export * from './lib/native-social-sharing.service';
+export * from './lib/native-app-rate.service';

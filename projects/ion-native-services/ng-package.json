@@ -21,7 +21,9 @@
       "@ionic-native/navigation-bar/ngx": "@ionic-native/navigation-bar/ngx",
       "@ionic-native/navigation-bar/ngx/index": "@ionic-native/navigation-bar/ngx/index",
       "@ionic-native/social-sharing/ngx": "@ionic-native/social-sharing/ngx",
-      "@ionic-native/social-sharing/ngx/index": "@ionic-native/social-sharing/ngx/index"
+      "@ionic-native/social-sharing/ngx/index": "@ionic-native/social-sharing/ngx/index",
+      "@ionic-native/app-rate/ngx": "@ionic-native/app-rate/ngx",
+      "@ionic-native/app-rate/ngx/index": "@ionic-native/app-rate/ngx/index"
     }
   }
 }
