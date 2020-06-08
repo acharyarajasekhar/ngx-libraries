@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar [color]="headerColor">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br />
+  <div class="container">
+    <dynamic-form #dynamicForm [controls]="controls" [form]="form" [svgIconBasePath]="'assets/icons/'">
+    </dynamic-form>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar [color]="headerColor">
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="start" name="close-outline"></ion-icon>Cancel
+      </ion-button>
+      <ion-button (click)="onSave()">
+        <ion-icon slot="start" name="checkmark-done-outline"></ion-icon>Submit
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

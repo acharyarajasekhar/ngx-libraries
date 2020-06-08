@@ -1,0 +1,26 @@
+{
+  "name": "@acharyarajasekhar/ngx-generic-form",
+  "version": "1.0.1",
+  "peerDependencies": {
+    "@acharyarajasekhar/busy-indicator": "^1.0.1",
+    "@acharyarajasekhar/custom-form-controls": "^1.0.7",
+    "@acharyarajasekhar/dynamic-forms": "^1.0.5",
+    "@acharyarajasekhar/google-maps": "^1.0.1",
+    "@acharyarajasekhar/elastic-textarea": "^1.0.0",
+    "@ionic/angular": "^5.1.1",
+    "@angular/fire": "^6.0.0",
+    "firebase": "^7.14.5",
+    "@angular/common": "^9.1.9",
+    "@angular/core": "^9.1.9"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/acharyarajasekhar/ngx-libraries.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
