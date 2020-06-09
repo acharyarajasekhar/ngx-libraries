@@ -3,6 +3,7 @@
  */
 
 export * from './lib/native-image-picker.service';
+export * from './lib/photo-viewer/photo-viewer.service';
 export * from './lib/photo-viewer/photo-viewer.directive';
 export * from './lib/photo-viewer/photo-viewer.module';
 export * from './lib/native-firebase-auth.service';
