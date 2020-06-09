@@ -32,6 +32,7 @@
     "@angular/router": "~9.1.7",
     "@ionic-native/android-permissions": "^5.26.0",
     "@ionic-native/app-rate": "^5.26.0",
+    "@ionic-native/app-version": "^5.26.0",
     "@ionic-native/core": "^5.26.0",
     "@ionic-native/firebase-authentication": "^5.26.0",
     "@ionic-native/image-picker": "^5.26.0",
