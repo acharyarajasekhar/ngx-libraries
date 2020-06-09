@@ -25,7 +25,9 @@
       "@ionic-native/app-rate/ngx": "@ionic-native/app-rate/ngx",
       "@ionic-native/app-rate/ngx/index": "@ionic-native/app-rate/ngx/index",
       "@ionic-native/app-version/ngx": "@ionic-native/app-version/ngx",
-      "@ionic-native/app-version/ngx/index": "@ionic-native/app-version/ngx/index"
+      "@ionic-native/app-version/ngx/index": "@ionic-native/app-version/ngx/index",
+      "@capacitor/core": "@capacitor/core",
+      "capacitor-fcm": "capacitor-fcm"
     }
   }
 }
