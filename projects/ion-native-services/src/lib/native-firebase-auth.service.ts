@@ -11,8 +11,8 @@ export class NativeFirebaseAuthService {
         private firebaseAuthentication: FirebaseAuthentication
     ) { }
 
-    verifyPhoneNumber(phoneNumber) {
-        return this.firebaseAuthentication.verifyPhoneNumber(phoneNumber, 60);
+    verifyPhoneNumber(phoneNumber, timeout) {
+        return this.firebaseAuthentication.verifyPhoneNumber(phoneNumber, timeout);
     }
 
     validateOtp(verificationId, verificationCode) {
