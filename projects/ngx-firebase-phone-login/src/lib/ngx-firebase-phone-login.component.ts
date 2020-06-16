@@ -72,20 +72,29 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
   private loginWithPhoneNumberByApp() {
     this.busy.show();
     const num = "+91" + this.phoneNumber.toString();
-    this.nativeFireBaseAuth.verifyPhoneNumber(num, 30000)
-      .then(async (result) => {
-        this.zone.run(() => {
-          this.smsWatch = true;          
-          this.windowRef.confirmationResult = result;
-        });
-        this.busy.hide();
-        this.toast.show("Verification code is sent to your mobile number");
-      })
-      .catch(error => {
-        this.busy.hide();
-        this.windowRef.confirmationResult = null;
-        this.toast.error(error);
+
+    this.nativeFireBaseAuth.signInPhoneOnCodeSent().subscribe(verificationId => {
+      this.zone.run(() => {
+        this.smsWatch = true;
+        this.windowRef.confirmationResult = verificationId;
       });
+      this.busy.hide();
+      this.toast.show("Verification code is sent to your mobile number");
+    })
+
+    if (this.platform.is('android')) {
+      this.nativeFireBaseAuth.signInPhoneOnCodeReceived().subscribe((event: { verificationId: string, verificationCode: string }) => {        
+        this.verificationCode = event.verificationCode;
+      })
+    }
+
+    this.nativeFireBaseAuth.verifyPhoneNumber(num).subscribe(user => {
+      console.log(user);
+      this.windowRef.confirmationResult = null;
+      this.router.navigate(['/home']);
+      this.toast.show("Login successfull...");
+    })
+
   }
 
   private loginWithPhoneNumberByWeb() {

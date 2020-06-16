@@ -29,7 +29,8 @@
       "@ionic-native/sms-retriever/ngx": "@ionic-native/sms-retriever/ngx",
       "@ionic-native/sms-retriever/ngx/index": "@ionic-native/sms-retriever/ngx/index",
       "@capacitor/core": "@capacitor/core",
-      "capacitor-fcm": "capacitor-fcm"
+      "capacitor-fcm": "capacitor-fcm",
+      "capacitor-firebase-auth": "capacitor-firebase-auth"
     }
   }
 }

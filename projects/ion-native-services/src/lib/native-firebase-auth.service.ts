@@ -1,27 +1,28 @@
 import { Injectable } from '@angular/core';
-import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ngx';
 import * as firebase from 'firebase/app';
+import { cfaSignIn, cfaSignInPhoneOnCodeSent, cfaSignInPhoneOnCodeReceived } from 'capacitor-firebase-auth';
 
 @Injectable({
     providedIn: 'root'
 })
 export class NativeFirebaseAuthService {
 
-    constructor(
-        private firebaseAuthentication: FirebaseAuthentication
-    ) { }
+    constructor() { }
 
-    verifyPhoneNumber(phoneNumber, timeout) {
-        return this.firebaseAuthentication.verifyPhoneNumber(phoneNumber, timeout);
+    verifyPhoneNumber(phoneNumber: string) {
+        return cfaSignIn('phone', { phone: phoneNumber });
     }
 
-    validateOtp(verificationId, verificationCode) {
+    signInPhoneOnCodeSent() {
+        return cfaSignInPhoneOnCodeSent();
+    }
+
+    signInPhoneOnCodeReceived() {
+        return cfaSignInPhoneOnCodeReceived();
+    }
+
+    validateOtp(verificationId: string, verificationCode: string) {
         let credentials = firebase.auth.PhoneAuthProvider.credential(verificationId, verificationCode);
-        return firebase.auth().signInWithCredential(credentials);
-    }
-
-    verifyEmailAndPassword(email: string, password: string) {
-        let credentials = firebase.auth.EmailAuthProvider.credential(email, password);
         return firebase.auth().signInWithCredential(credentials);
     }
 
