@@ -83,8 +83,13 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     })
 
     if (this.platform.is('android')) {
-      this.nativeFireBaseAuth.signInPhoneOnCodeReceived().subscribe((event: { verificationId: string, verificationCode: string }) => {        
+      this.nativeFireBaseAuth.signInPhoneOnCodeReceived().subscribe((event: { verificationId: string, verificationCode: string }) => {
         this.verificationCode = event.verificationCode;
+        this.zone.run(() => {
+          this.smsWatch = false;
+          this.windowRef.confirmationResult = null;
+          this.toast.show("Login successfull...");
+        });
       })
     }
 
