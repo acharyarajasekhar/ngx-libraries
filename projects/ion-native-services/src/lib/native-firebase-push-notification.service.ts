@@ -11,12 +11,18 @@ import {
 const { PushNotifications } = Plugins;
 
 import { FCM } from "capacitor-fcm";
+import { Subject } from 'rxjs';
 const fcm = new FCM();
 
 @Injectable({
     providedIn: 'root'
 })
 export class NativeFirebasePushNotificationService {
+
+    public registration: Subject<any> = new Subject<any>();
+    public registrationError: Subject<any> = new Subject<any>();
+    public pushNotificationActionPerformed: Subject<any> = new Subject<any>();
+    public pushNotificationReceived: Subject<any> = new Subject<any>();
 
     constructor(
         private platform: Platform
@@ -34,25 +40,25 @@ export class NativeFirebasePushNotificationService {
 
             PushNotifications.addListener('registration',
                 (token: PushNotificationToken) => {
-                    console.log('Push registration success, token: ' + token.value);
+                    this.registration.next(token);
                 }
             );
 
             PushNotifications.addListener('registrationError',
                 (error: any) => {
-                    console.log('Error on registration: ' + JSON.stringify(error));
+                    this.registrationError.next(error);
                 }
             );
 
             PushNotifications.addListener('pushNotificationReceived',
                 (notification: PushNotification) => {
-                    console.log('Push received: ' + JSON.stringify(notification));
+                    this.pushNotificationReceived.next(notification);
                 }
             );
 
             PushNotifications.addListener('pushNotificationActionPerformed',
                 (notification: PushNotificationActionPerformed) => {
-                    console.log('Push action performed: ' + JSON.stringify(notification));
+                    this.pushNotificationActionPerformed.next(notification);
                 }
             );
         }
