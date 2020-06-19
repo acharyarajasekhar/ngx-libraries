@@ -87,16 +87,16 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
         this.verificationCode = event.verificationCode;
         this.zone.run(() => {
           this.smsWatch = false;
-          this.windowRef.confirmationResult = null;
+          this.router.navigate(['/home']);
+          this.windowRef.confirmationResult = null;          
           this.toast.show("Login successfull...");
         });
       })
     }
 
     this.nativeFireBaseAuth.verifyPhoneNumber(num).subscribe(user => {
-      console.log(user);
-      this.windowRef.confirmationResult = null;
       this.router.navigate(['/home']);
+      this.windowRef.confirmationResult = null;
       this.toast.show("Login successfull...");
     })
 
