@@ -48,6 +48,10 @@
       "ngx-generic-form": [
         "dist/ngx-generic-form/ngx-generic-form",
         "dist/ngx-generic-form"
+      ],
+      "ngx-network-alert": [
+        "dist/ngx-network-alert/ngx-network-alert",
+        "dist/ngx-network-alert"
       ]
     }
   },
