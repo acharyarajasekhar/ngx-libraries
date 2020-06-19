@@ -1,46 +1,41 @@
-<ion-content [fullscreen]="true">
-    <div id="container">
-
-        <div class="card" style="width: 20rem; margin: auto;" *ngIf="!windowRef.confirmationResult">
-            <div class="card-body">
-                <h5 class="card-title">Login</h5>
-                <p class="card-text">Please enter your mobile number</p>
-                <br />
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">+91</span>
-                    </div>
-                    <input type="number" class="form-control" [(ngModel)]="phoneNumber">
-                </div>
-                <ion-button color="primary" (click)="sendLoginCode()">Login</ion-button>
+<div class="card" style="width: 20rem; margin: auto; border-top: 5px solid #004a8f;"
+    *ngIf="!windowRef.confirmationResult">
+    <div class="card-body">
+        <h5 class="card-title">Login</h5>
+        <p class="card-text">Please enter your mobile number</p>
+        <br />
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">+91</span>
             </div>
+            <input type="number" class="form-control" [(ngModel)]="phoneNumber">
         </div>
-
-        <div #captchaDiv id="captchaDiv" class="captcha-div" *ngIf="!this.isMobile"
-            [ngStyle]="{ 'display': windowRef.confirmationResult ? 'none' : 'inline-block' }"></div>
-
-        <div class="card" style="width: 20rem; margin: auto;" *ngIf="windowRef.confirmationResult">
-            <div class="card-body">
-                <h5 class="card-title">Verify</h5>
-                <p class="card-text">Please enter the one time password sent to your mobile number...</p>
-                <p class="card-text">{{ '+91' + phoneNumber }}</p>
-                <br />
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">OTP</span>
-                    </div>
-                    <input type="number" class="form-control" [(ngModel)]="verificationCode">
-                </div>
-                <p class="card-text" *ngIf="smsWatch" style="width: 100%;">
-                    <small class="text-muted"
-                        style="display: flex; align-items: center; text-align: center; width: 100%;">
-                        <ion-spinner name="lines-small" slot="start" class="otp-spinner"></ion-spinner> Trying to auto
-                        fetch otp...
-                    </small>
-                </p>
-                <ion-button color="primary" (click)="verifyLoginCode()">Verify</ion-button>
-            </div>
-        </div>
-
+        <ion-button color="primary" (click)="sendLoginCode()">Login</ion-button>
     </div>
-</ion-content>
+</div>
+
+<div #captchaDiv id="captchaDiv" class="captcha-div" *ngIf="!this.isMobile"
+    [ngStyle]="{ 'display': windowRef.confirmationResult ? 'none' : 'inline-block' }"></div>
+
+<div class="card" style="width: 20rem; margin: auto; border-top: 5px solid #004a8f;"
+    *ngIf="windowRef.confirmationResult">
+    <div class="card-body">
+        <h5 class="card-title">Verify</h5>
+        <p class="card-text">Please enter the one time password sent to your mobile number...</p>
+        <p class="card-text">{{ '+91' + phoneNumber }}</p>
+        <br />
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">OTP</span>
+            </div>
+            <input type="number" class="form-control" [(ngModel)]="verificationCode">
+        </div>
+        <p class="card-text" *ngIf="smsWatch" style="width: 100%;">
+            <small class="text-muted" style="display: flex; align-items: center; text-align: center; width: 100%;">
+                <ion-spinner name="lines-small" slot="start" class="otp-spinner"></ion-spinner> Trying to auto
+                fetch otp...
+            </small>
+        </p>
+        <ion-button color="primary" (click)="verifyLoginCode()">Verify</ion-button>
+    </div>
+</div>
