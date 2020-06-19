@@ -1,7 +1,7 @@
 <div class="alert-black-overlay" [ngStyle]="{'background-color': bdColor}">
   <div class="alert-content" [ngStyle]="{ 'background-color': bgColor, 'color': color }">
     <ion-icon [name]="icon" id="alert-icon"></ion-icon>
-    <p *ngIf="message" class="messagestyle" [style.color]="color">
+    <p *ngIf="message" class="messagestyle" [style.color]="color" style="padding-top: 0px; margin-top: 0px;">
       {{ message }}
     </p>
   </div>
