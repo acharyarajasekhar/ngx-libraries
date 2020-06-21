@@ -5,11 +5,30 @@ import { Platform } from '@ionic/angular';
 import { NativeFirebaseAuthService } from '@acharyarajasekhar/ion-native-services';
 import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
 import * as firebase from 'firebase/app';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'ngx-firebase-phone-login',
   templateUrl: 'ngx-firebase-phone-login.component.html',
-  styleUrls: ['ngx-firebase-phone-login.component.css']
+  styleUrls: ['ngx-firebase-phone-login.component.css'],
+  animations: [
+    trigger('listItemState', [
+      state('in',
+        style({
+          opacity: 1,
+          height: '*',
+          minHeight: '*'
+        })
+      ),
+      transition('* => void', [
+        animate('0.25s ease-out', style({
+          opacity: 0,
+          height: '1px',
+          minHeight: '1px'
+        }))
+      ])
+    ])
+  ]
 })
 export class NgxFirebasePhoneLoginComponent implements OnInit {
 
@@ -84,15 +103,20 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
 
     if (this.platform.is('android')) {
       this.nativeFireBaseAuth.signInPhoneOnCodeReceived().subscribe((event: { verificationId: string, verificationCode: string }) => {
+        this.busy.show();
         this.zone.run(() => {
-          this.busy.show();
           this.verificationCode = event.verificationCode;
           this.smsWatch = false;
-          this.toast.show("Login successfull...");
-          this.router.navigate(['/home']).then(() => {
-            this.busy.hide();
-          })
         });
+        this.toast.show("Login successfull...");
+        this.router.navigate(['/home']).then(() => {
+          this.phoneNumber = null;
+          this.verificationCode = null;
+          this.windowRef.confirmationResult = null;
+        });
+        setTimeout(() => {
+          this.busy.hide();
+        }, 1000);
       })
     }
 
@@ -143,9 +167,11 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     this.nativeFireBaseAuth.validateOtp(this.windowRef.confirmationResult, this.verificationCode.toString())
       .then(result => {
         this.busy.hide();
-        this.phoneNumber = null;
-        this.verificationCode = null;
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home']).then(() => {
+          this.phoneNumber = null;
+          this.verificationCode = null;
+          this.windowRef.confirmationResult = null;
+        });
         this.toast.show("Login successfull...");
       })
       .catch(error => {
@@ -160,7 +186,11 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
       .confirm(this.verificationCode.toString())
       .then(result => {
         this.busy.hide();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home']).then(() => {
+          this.phoneNumber = null;
+          this.verificationCode = null;
+          this.windowRef.confirmationResult = null;
+        });
         this.toast.show("Login successfull...");
       })
       .catch(error => {
