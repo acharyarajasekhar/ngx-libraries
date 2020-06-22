@@ -110,13 +110,15 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
         });
         this.toast.show("Login successfull...");
         this.router.navigate(['/home']).then(() => {
-          this.phoneNumber = null;
-          this.verificationCode = null;
-          this.windowRef.confirmationResult = null;
+          setTimeout(() => {
+            this.phoneNumber = null;
+            this.verificationCode = null;
+            this.windowRef.confirmationResult = null;
+          }, 3000);
         });
         setTimeout(() => {
           this.busy.hide();
-        }, 1000);
+        }, 3000);
       })
     }
 
@@ -168,9 +170,11 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
       .then(result => {
         this.busy.hide();
         this.router.navigate(['/home']).then(() => {
-          this.phoneNumber = null;
-          this.verificationCode = null;
-          this.windowRef.confirmationResult = null;
+          setTimeout(() => {
+            this.phoneNumber = null;
+            this.verificationCode = null;
+            this.windowRef.confirmationResult = null;
+          }, 3000);
         });
         this.toast.show("Login successfull...");
       })
@@ -187,9 +191,11 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
       .then(result => {
         this.busy.hide();
         this.router.navigate(['/home']).then(() => {
-          this.phoneNumber = null;
-          this.verificationCode = null;
-          this.windowRef.confirmationResult = null;
+          setTimeout(() => {
+            this.phoneNumber = null;
+            this.verificationCode = null;
+            this.windowRef.confirmationResult = null;
+          }, 3000);
         });
         this.toast.show("Login successfull...");
       })
