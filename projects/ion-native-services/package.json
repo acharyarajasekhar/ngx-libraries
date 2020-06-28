@@ -1,21 +1,15 @@
 {
   "name": "@acharyarajasekhar/ion-native-services",
-  "version": "1.1.12",
+  "version": "1.1.14",
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9",
     "@ionic-native/core": "^5.26.0",
     "@ionic-native/image-picker": "^5.26.0",
     "@ionic-native/photo-viewer": "^5.26.0",
-    "@ionic-native/android-permissions": "^5.26.0",
     "@acharyarajasekhar/ngx-utility-services": "1.0.3",
-    "@ionic-native/navigation-bar": "^5.26.0",
-    "@ionic-native/social-sharing": "^5.26.0",
-    "@ionic-native/app-rate": "^5.26.0",
-    "@ionic-native/app-version": "^5.26.0",
     "capacitor-fcm": "^2.0.0",
-    "@capacitor/core": "^2.1.2",
-    "@ionic-native/sms-retriever": "^5.26.0"
+    "@capacitor/core": "^2.1.2"
   },
   "dependencies": {
     "tslib": "^1.10.0"
