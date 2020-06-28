@@ -2,14 +2,14 @@
     *ngIf="!windowRef.confirmationResult">
     <div class="card-body">
         <h5 class="card-title">Login</h5>
-        <p class="card-text">Please enter your mobile number</p>
+        <p class="card-text">Please enter your mobile number. We will send one time password to this number to authenticate...</p>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">+91</span>
             </div>
             <input type="number" class="form-control" [(ngModel)]="phoneNumber">
         </div>
-        <ion-button color="primary" (click)="sendLoginCode()">Login</ion-button>
+        <ion-button color="primary" (click)="sendLoginCode()">Next</ion-button>
     </div>
 </div>
 
@@ -34,6 +34,6 @@
                 fetch otp...
             </small>
         </p>
-        <ion-button color="primary" (click)="verifyLoginCode()">Verify</ion-button>
+        <ion-button color="primary" (click)="verifyLoginCode()">Next</ion-button>
     </div>
 </div>

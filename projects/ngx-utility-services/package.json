@@ -1,11 +1,12 @@
 {
   "name": "@acharyarajasekhar/ngx-utility-services",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "peerDependencies": {
     "@acharyarajasekhar/dynamic-dom-injector": "^1.0.0",
     "@acharyarajasekhar/upload-progress-indicator": "^1.0.2",
     "firebase": "^7.14.5",
     "lodash": "^1.0.0",
+    "ngx-toastr": "^12.1.0",
     "@angular/fire": "^6.0.0",
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9",    

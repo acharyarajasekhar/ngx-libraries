@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
     providedIn: 'root'
@@ -9,16 +9,34 @@ export class ToastService {
     private toast: any;
 
     constructor(
-        private toastController: ToastController) { }
+        private toastr: ToastrService) { }
 
-    async show(message: string, duration: number = 2000) {
-        this.toast = await this.toastController.create({
-            message: message,
-            duration: duration,
-            mode: 'ios',
-            color: 'dark'
-        });
-        await this.toast.present();
+    async info(message: string, duration: number = 2000, title: string = null) {
+        this.toastr.info(message, title, {
+            positionClass: 'toast-bottom-center',
+            timeOut: duration
+        })
+    }
+
+    async warning(message: string, duration: number = 2000, title: string = null) {
+        this.toastr.warning(message, title, {
+            positionClass: 'toast-bottom-center',
+            timeOut: duration
+        })
+    }
+
+    async success(message: string, duration: number = 2000, title: string = null) {
+        this.toastr.success(message, title, {
+            positionClass: 'toast-bottom-center',
+            timeOut: duration
+        })
+    }
+
+    async show(message: string, duration: number = 2000, title: string = null) {
+        this.toastr.success(message, title, {
+            positionClass: 'toast-bottom-center',
+            timeOut: duration
+        })
     }
 
     async error(error: any) {
@@ -29,19 +47,12 @@ export class ToastService {
         else if (!!error.message) { message = error.message; }
         else { message = JSON.stringify(error); }
 
-        const toast = await this.toastController.create({
-            header: 'ERROR',
-            message: message,
-            position: 'bottom',
-            mode: 'ios',
-            color: 'danger',
-            buttons: [{
-                text: 'Ok',
-                role: 'cancel',
-                handler: () => { }
-            }]
+        this.toastr.error(message, 'Error', {
+            disableTimeOut: true,
+            positionClass: 'toast-bottom-center',
+            tapToDismiss: true,
+            closeButton: true
         });
-        toast.present();
 
     }
 

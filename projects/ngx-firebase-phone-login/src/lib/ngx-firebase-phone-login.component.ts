@@ -98,7 +98,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
         this.smsWatch = true;
         this.windowRef.confirmationResult = verificationId;
         this.busy.hide();
-        this.toast.show("OTP Sent...");
+        this.toast.show("OTP is sent to your mobile number");
       });
 
     }, err => this.toast.error(err));
@@ -109,7 +109,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
           this.windowRef.confirmationResult = event.verificationId;
           this.verificationCode = event.verificationCode;
           this.smsWatch = false;
-          this.toast.show("OTP Received...");
+          this.toast.show("OTP is received and we are trying to auto login you...");
         });
       }, err => this.toast.error(err));
     }
@@ -140,7 +140,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
           this.windowRef.confirmationResult = result;
         });
         this.busy.hide();
-        this.toast.show("Verification code is sent to your mobile number");
+        this.toast.show("OTP is sent to your mobile number");
       })
       .catch(error => {
         this.busy.hide();
@@ -152,7 +152,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
   verifyLoginCode() {
 
     if (!!!this.verificationCode) {
-      this.toast.error({ message: "Please enter verification code" });
+      this.toast.error({ message: "Please enter the OTP received on your mobile number..." });
       return;
     }
 

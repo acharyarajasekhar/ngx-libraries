@@ -6,6 +6,7 @@
     "umdModuleIds": {
       "@acharyarajasekhar/upload-progress-indicator": "@acharyarajasekhar/upload-progress-indicator",
       "lodash": "lodash",
+      "ngx-toastr": "ngx-toastr",
       "@ionic/angular": "@ionic/angular"
     }
   }
