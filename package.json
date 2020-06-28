@@ -17,7 +17,7 @@
     "@acharyarajasekhar/dynamic-forms": "^1.0.5",
     "@acharyarajasekhar/elastic-textarea": "^1.0.0",
     "@acharyarajasekhar/google-maps": "^1.0.1",
-    "@acharyarajasekhar/ion-native-services": "^1.1.11",
+    "@acharyarajasekhar/ion-native-services": "^1.1.15",
     "@acharyarajasekhar/ngx-image-preloader": "^1.0.0",
     "@acharyarajasekhar/ngx-utility-services": "^1.0.3",
     "@acharyarajasekhar/upload-progress-indicator": "^1.0.2",

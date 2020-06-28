@@ -6,6 +6,7 @@ import { NativeFirebaseAuthService } from '@acharyarajasekhar/ion-native-service
 import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
 import * as firebase from 'firebase/app';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-firebase-phone-login',
@@ -57,7 +58,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
 
   }
 
-  ngAfterViewInit() {
+  ionViewWillEnter() {
     setTimeout(() => {
       this.phoneNumber = null;
       this.verificationCode = null;
@@ -92,23 +93,31 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     this.busy.show();
     const num = "+91" + this.phoneNumber.toString();
 
-    this.nativeFireBaseAuth.signInPhoneOnCodeSent().subscribe(verificationId => {
+    this.nativeFireBaseAuth.onCodeSent().pipe(take(1)).subscribe(verificationId => {
       this.zone.run(() => {
         this.smsWatch = true;
         this.windowRef.confirmationResult = verificationId;
+        this.busy.hide();
+        this.toast.show("OTP Sent...");
       });
-      this.busy.hide();
-      this.toast.show("Verification code is sent to your mobile number");
-    })
+
+    }, err => this.toast.error(err));
 
     if (this.platform.is('android')) {
-      this.nativeFireBaseAuth.signInPhoneOnCodeReceived().subscribe((event: { verificationId: string, verificationCode: string }) => {
-        this.busy.show();
+      this.nativeFireBaseAuth.onCodeReceived().pipe(take(1)).subscribe((event: { verificationId: string, verificationCode: string }) => {
         this.zone.run(() => {
+          this.windowRef.confirmationResult = event.verificationId;
           this.verificationCode = event.verificationCode;
           this.smsWatch = false;
+          this.toast.show("OTP Received...");
         });
+      }, err => this.toast.error(err));
+    }
+
+    let signinSub = this.nativeFireBaseAuth.signInWithPhone(num).subscribe(user => {
+      if (!!user && !!user.phoneNumber) {
         this.toast.show("Login successfull...");
+        signinSub.unsubscribe();
         this.router.navigate(['/home']).then(() => {
           setTimeout(() => {
             this.phoneNumber = null;
@@ -116,16 +125,8 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
             this.windowRef.confirmationResult = null;
           }, 3000);
         });
-        setTimeout(() => {
-          this.busy.hide();
-        }, 3000);
-      })
-    }
-
-    this.nativeFireBaseAuth.verifyPhoneNumber(num).subscribe(user => {
-      this.toast.show("Login successfull...");
-      this.router.navigate(['/home']);
-    })
+      }
+    }, err => this.toast.error(err));
 
   }
 
@@ -166,7 +167,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
 
   private verifyLoginOtpByApp() {
     this.busy.show();
-    this.nativeFireBaseAuth.validateOtp(this.windowRef.confirmationResult, this.verificationCode.toString())
+    this.nativeFireBaseAuth.validateCode(this.windowRef.confirmationResult, this.verificationCode.toString())
       .then(result => {
         this.busy.hide();
         this.router.navigate(['/home']).then(() => {
@@ -203,6 +204,14 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
         this.busy.hide();
         this.toast.error(error);
       });
+  }
+
+  ionViewWillLeave() {
+    setTimeout(() => {
+      this.phoneNumber = null;
+      this.verificationCode = null;
+      this.windowRef.confirmationResult = null;
+    });
   }
 
 }
