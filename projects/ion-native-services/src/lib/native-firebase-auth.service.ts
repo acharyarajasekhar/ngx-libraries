@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
-import { cfaSignIn, cfaSignInPhoneOnCodeSent, cfaSignInPhoneOnCodeReceived, cfaSignOut } from 'capacitor-firebase-auth';
+import { cfaSignInPhoneOnCodeSent, cfaSignInPhoneOnCodeReceived, cfaSignOut, cfaSignInPhone } from 'capacitor-firebase-auth';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +10,7 @@ export class NativeFirebaseAuthService {
     constructor() { }
 
     signInWithPhone(phoneNumber: string) {
-        return cfaSignIn('phone', { phone: phoneNumber });
+        return cfaSignInPhone(phoneNumber, null);
     }
 
     onCodeSent() {
