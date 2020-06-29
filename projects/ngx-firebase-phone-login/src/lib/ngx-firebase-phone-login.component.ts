@@ -101,7 +101,10 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
         this.toast.show("OTP is sent to your mobile number");
       });
 
-    }, err => this.toast.error(err));
+    }, err => {
+      this.busy.hide();
+      this.toast.error(err)
+    });
 
     if (this.platform.is('android')) {
       this.nativeFireBaseAuth.onCodeReceived().pipe(take(1)).subscribe((event: { verificationId: string, verificationCode: string }) => {
@@ -126,7 +129,10 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
           }, 3000);
         });
       }
-    }, err => this.toast.error(err));
+    }, err => {
+      this.busy.hide();
+      this.toast.error(err)
+    });
 
   }
 
