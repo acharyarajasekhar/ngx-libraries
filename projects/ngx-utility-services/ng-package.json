@@ -7,6 +7,7 @@
       "@acharyarajasekhar/upload-progress-indicator": "@acharyarajasekhar/upload-progress-indicator",
       "lodash": "lodash",
       "ngx-toastr": "ngx-toastr",
+      "@sentry/browser": "@sentry/browser",
       "@ionic/angular": "@ionic/angular"
     }
   }

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { SentryErrorHandler } from './sentry-error.handler';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ToastService {
 
-    private toast: any;
-
     constructor(
+        private errorHandler: SentryErrorHandler,
         private toastr: ToastrService) { }
 
     async info(message: string, duration: number = 2000, title: string = null) {
@@ -40,6 +40,8 @@ export class ToastService {
     }
 
     async error(error: any) {
+
+        this.errorHandler.handleError(error);
 
         let message: any = '';
 
