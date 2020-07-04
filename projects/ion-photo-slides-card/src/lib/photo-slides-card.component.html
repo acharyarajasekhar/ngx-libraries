@@ -2,7 +2,7 @@
   <ion-slides [pager]="showPager" id="cover" [options]="options" [style.height]="height">
     <ion-slide [style.height]="height" *ngFor="let slide of slides">
       <img [coverphoto]="slide" [defaultImage]='loadingPhoto' [fallbackImage]="defaultPhoto"
-        class="card-img-top img-fluid" [ngClass]="isRounded ? 'rounded' : ''" [zoomable]="slide" />
+        class="card-img-top img-fluid" [ngClass]="isRounded ? 'rounded' : ''" (click)="zoomThis(slide)" />
     </ion-slide>
   </ion-slides>
 </ng-container>

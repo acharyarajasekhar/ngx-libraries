@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NativePhotoViewerService } from '@acharyarajasekhar/ion-native-services';
 
 @Component({
   selector: 'photo-slides-card',
@@ -14,16 +15,23 @@ export class PhotoSlidesCardComponent implements OnInit {
   @Input() fallbackPhoto: string = "assets/imgs/defaults/nocoverphoto.png";
   @Input() showPager: boolean = true;
   @Input() isRounded: boolean = false;
+  @Input() isZoomable: boolean = true;
 
   options: any;
 
-  constructor() { }
+  constructor(private nativePhotoViewerService: NativePhotoViewerService) { }
 
   ngOnInit() {
     this.options = {
       autoplay: {
         delay: 5000,
       }
+    }
+  }
+
+  async zoomThis(slide) {
+    if (this.isZoomable === true) {
+      await this.nativePhotoViewerService.view(slide);
     }
   }
 

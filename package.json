@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "pubpa": "ng build ngx-firebase-phone-login --prod && cd dist/ngx-firebase-phone-login && npm pack && npm publish",
+    "pubus": "ng build ngx-utility-services --prod && cd dist/ngx-utility-services && npm pack && npm publish",    
+    "pubips": "ng build ion-photo-slides-card --prod && cd dist/ion-photo-slides-card && npm pack && npm publish"
   },
   "private": true,
   "dependencies": {

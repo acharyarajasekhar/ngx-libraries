@@ -51,15 +51,14 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     private zone: NgZone,
     private platform: Platform,
     private nativeFireBaseAuth: NativeFirebaseAuthService
-  ) {
-    if (this.platform.is('android') || this.platform.is('ios')) this.isMobile = true;
-  }
+  ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
 
-  }
+  ngAfterViewInit(): void {
+    if (this.platform.is('hybrid')) { this.isMobile = true; }
+    else { this.isMobile = false; }
 
-  ionViewWillEnter() {
     setTimeout(() => {
       this.phoneNumber = null;
       this.verificationCode = null;
@@ -75,10 +74,24 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     }
   }
 
+
+  isValidPhoneNumber(phoneNumber: string) {
+    var phoneno = /^\d{10}$/;
+    if (!!phoneNumber && String(phoneNumber).match(phoneno)) {
+      return true;
+    }
+    return false;
+  }
+
   sendLoginCode() {
 
     if (!!!this.phoneNumber) {
-      this.toast.error({ message: "Please enter valid phone number" });
+      this.toast.error({ message: "Please enter your phone number" });
+      return;
+    }
+
+    if (!!this.phoneNumber && !this.isValidPhoneNumber(this.phoneNumber)) {
+      this.toast.error({ message: "Please enter valid 10 digit phone number. At present we only support indian phone numbers and it will be auto prefixed with +91." });
       return;
     }
 
