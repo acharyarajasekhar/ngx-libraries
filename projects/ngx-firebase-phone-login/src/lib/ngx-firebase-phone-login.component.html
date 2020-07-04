@@ -2,7 +2,8 @@
     *ngIf="!windowRef.confirmationResult">
     <div class="card-body">
         <h5 class="card-title">Login</h5>
-        <p class="card-text">Please enter your mobile number. We will send one time password to this number to authenticate...</p>
+        <p class="card-text">Please enter your mobile number. We will send one time password to this number to
+            authenticate...</p>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">+91</span>
@@ -34,6 +35,15 @@
                 fetch otp...
             </small>
         </p>
-        <ion-button color="primary" (click)="verifyLoginCode()">Next</ion-button>
+        <p class="card-text" *ngIf="autoLogin" style="width: 100%;" [@listItemState]="'in'">
+            <small class="text-muted" style="display: flex; align-items: center; text-align: center; width: 100%;">
+                <ion-spinner name="lines-small" slot="start" class="otp-spinner"></ion-spinner> Trying to auto login
+                you...
+            </small>
+        </p>
+        <ion-button color="primary" (click)="verifyLoginCode()">
+            <ion-spinner name="dots" *ngIf="autoLogin"></ion-spinner>
+            <ion-text *ngIf="!autoLogin">Next</ion-text>
+        </ion-button>
     </div>
 </div>

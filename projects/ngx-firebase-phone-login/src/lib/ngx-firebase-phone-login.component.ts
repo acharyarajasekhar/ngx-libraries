@@ -40,6 +40,7 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
   phoneNumber: string;
   verificationCode: string;
 
+  public autoLogin: boolean = false;
   public smsWatch: boolean = false;
   isMobile: boolean = false;
 
@@ -109,10 +110,14 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
     if (this.platform.is('android')) {
       this.nativeFireBaseAuth.onCodeReceived().pipe(take(1)).subscribe((event: { verificationId: string, verificationCode: string }) => {
         this.zone.run(() => {
+          this.autoLogin = true;
           this.windowRef.confirmationResult = event.verificationId;
           this.verificationCode = event.verificationCode;
           this.smsWatch = false;
           this.toast.show("OTP is received and we are trying to auto login you...");
+          setTimeout(() => {
+            this.autoLogin = false;
+          }, 5000);
         });
       }, err => this.toast.error(err));
     }
@@ -156,6 +161,8 @@ export class NgxFirebasePhoneLoginComponent implements OnInit {
   }
 
   verifyLoginCode() {
+
+    if (this.autoLogin) return;
 
     if (!!!this.verificationCode) {
       this.toast.error({ message: "Please enter the OTP received on your mobile number..." });

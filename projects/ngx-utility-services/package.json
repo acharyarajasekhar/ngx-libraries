@@ -1,6 +1,6 @@
 {
   "name": "@acharyarajasekhar/ngx-utility-services",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "peerDependencies": {
     "@acharyarajasekhar/dynamic-dom-injector": "^1.0.0",
     "@acharyarajasekhar/upload-progress-indicator": "^1.0.2",
